@@ -12,9 +12,8 @@ interface Props {
   post: CollectionEntry<'post'>;
   headings: { depth: number; text: string; slug: string }[];
   citations: { id: string; text: string; url: string; title?: string }[];
-  content: string;
 }
-const { post, headings, citations, content } = Astro.props;
+const { post, headings, citations } = Astro.props;
 const siteURL = 'https://verbooculto.beehiiv.com';
 const jsonLd = generateArticleJsonLd(post, siteURL);
 const categoryLabels: Record<string, string> = {
@@ -31,11 +30,13 @@ const categoryLabels: Record<string, string> = {
       <div class="article-meta">
         <time datetime={post.data.pubDate.toISOString().split('T')[0]}>{formatDate(post.data.pubDate)}</time>
         {post.data.updatedDate && <time datetime={post.data.updatedDate.toISOString().split('T')[0]}>Atualizado: {formatDate(post.data.updatedDate)}</time>}
-        <span>{readingTime(content)}</span>
+        <span>{readingTime(post.body)}</span>
         <span>por {post.data.author}</span>
       </div>
     </header>
-    <div class="article-content" set:html={content} />
+    <div class="article-content">
+      <slot />
+    </div>
     {headings.filter(h => h.depth === 2 || h.depth === 3).length > 0 && <TableOfContents headings={headings} />}
     {citations.length > 0 && <CitationList citations={citations} />}
     <hr style="margin: 3rem 0; border-color: var(--color-border);" />

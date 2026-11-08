@@ -2,6 +2,7 @@
 import HomeLayout from '@/layouts/HomeLayout.astro';
 import NewsletterForm from '@/components/NewsletterForm.astro';
 import { getCollection } from 'astro:content';
+const base = import.meta.env.BASE_URL || '/';
 ---
 <HomeLayout>
   <article class="container">
@@ -13,9 +14,9 @@ import { getCollection } from 'astro:content';
     <section style="margin-bottom: 3rem;">
       <h2>📍 Nível 1: Fundamentos (Semanas 1–4)</h2>
       <ol style="line-height: 2;">
-        <li><strong>Leia:</strong> <a href="/artigos/hermetismo-para-iniciantes/">Hermetismo para Iniciantes</a> — 7 princípios, história, como estudar.</li>
-        <li><strong>Baixe:</strong> <a href="/newsletter">PDF "5 Textos Essenciais"</a> — Corpus Hermeticum I, Enoque 1–5, Kybalion (crítico), Chave de Salomão, Pistis Sophia.</li>
-        <li><strong>Assista/Leia:</strong> <a href="/artigos/livro-de-enoque-guia-completo/">Livro de Enoque: Guia Completo</a> — estrutura, manuscritos, traduções.</li>
+        <li><strong>Leia:</strong> <a href={base + "artigos/hermetismo-para-iniciantes/"}>Hermetismo para Iniciantes</a> — 7 princípios, história, como estudar.</li>
+        <li><strong>Baixe:</strong> <a href={base + "newsletter"}>PDF "5 Textos Essenciais"</a> — Corpus Hermeticum I, Enoque 1–5, Kybalion (crítico), Chave de Salomão, Pistis Sophia.</li>
+        <li><strong>Assista/Leia:</strong> <a href={base + "artigos/livro-de-enoque-guia-completo/"}>Livro de Enoque: Guia Completo</a> — estrutura, manuscritos, traduções.</li>
         <li><strong>Pratique:</strong> Exercício semanal da Newsletter #1 (leitura em voz alta + anotação à mão).</li>
       </ol>
     </section>
@@ -23,26 +24,26 @@ import { getCollection } from 'astro:content';
     <section style="margin-bottom: 3rem;">
       <h2>📍 Nível 2: Textos Primários (Meses 2–3)</h2>
       <ol style="line-height: 2;">
-        <li><a href="/artigos/clavicula-salomonis-chave-salmao/">Chave de Salomão / Clavículas</a> — história, estrutura, o que estudar.</li>
-        <li><a href="/artigos/pistis-sophia-resumo-comentado/">Pistis Sophia</a> — queda de Sophia, arquétipo gnóstico.</li>
-        <li><a href="/artigos/testamento-salmao-analise/">Testamento de Salomão</a> — demônios, anel, magia cerimonial medieval.</li>
-        <li><a href="/artigos/nag-hammadi-evangelho-tome/">Evangelho de Tomé</a> — ditos 1–10 comentados.</li>
+        <li><a href={base + "artigos/clavicula-salomonis-chave-salmao/"}>Chave de Salomão / Clavículas</a> — história, estrutura, o que estudar.</li>
+        <li><a href={base + "artigos/pistis-sophia-resumo-comentado/"}>Pistis Sophia</a> — queda de Sophia, arquétipo gnóstico.</li>
+        <li><a href={base + "artigos/testamento-salmao-analise/"}>Testamento de Salomão</a> — demônios, anel, magia cerimonial medieval.</li>
+        <li><a href={base + "artigos/nag-hammadi-evangelho-tome/"}>Evangelho de Tomé</a> — ditos 1–10 comentados.</li>
       </ol>
     </section>
 
     <section style="margin-bottom: 3rem;">
       <h2>📍 Nível 3: Síntese e Crítica (Mês 4+)</h2>
       <ol style="line-height: 2;">
-        <li><a href="/artigos/kybalion-vs-corpus-hermeticum/">Kybalion vs Corpus Hermeticum</a> — o que é hermético, o que é New Thought.</li>
-        <li><a href="/artigos/faq-hermetismo-apocrifos-grimorios/">FAQ: 15 Dúvidas Comuns</a> — terminologia, métodos, armadilhas.</li>
-        <li><a href="/artigos/praticas-hermeticas-seguras/">Práticas Herméticas Seguras</a> — meditação, journaling, vibração.</li>
-        <li><a href="/artigos/magia-cerimonial-iniciante-guia/">Magia Cerimonial: Contexto Histórico</a> — LBRP, Middle Pillar, Hexagrama.</li>
+        <li><a href={base + "artigos/kybalion-vs-corpus-hermeticum/"}>Kybalion vs Corpus Hermeticum</a> — o que é hermético, o que é New Thought.</li>
+        <li><a href={base + "artigos/faq-hermetismo-apocrifos-grimorios/"}>FAQ: 15 Dúvidas Comuns</a> — terminologia, métodos, armadilhas.</li>
+        <li><a href={base + "artigos/praticas-hermeticas-seguras/"}>Práticas Herméticas Seguras</a> — meditação, journaling, vibração.</li>
+        <li><a href={base + "artigos/magia-cerimonial-iniciante-guia/"}>Magia Cerimonial: Contexto Histórico</a> — LBRP, Middle Pillar, Hexagrama.</li>
       </ol>
     </section>
 
     <section style="margin-bottom: 3rem;">
       <h2>📍 Nível 4: Rotina Autônoma</h2>
-      <p><a href="/artigos/rotina-estudo-hermetico-30-min/">Rotina de 30 min/dia</a> — planilha + cronograma + método de leitura ativa.</p>
+      <p><a href={base + "artigos/rotina-estudo-hermetico-30-min/"}>Rotina de 30 min/dia</a> — planilha + cronograma + método de leitura ativa.</p>
     </section>
 
     <hr style="margin: 3rem 0; border-color: var(--color-border);" />

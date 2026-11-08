@@ -3,7 +3,8 @@ interface Props {
   post: import('astro:content').CollectionEntry<'post'>;
 }
 const { post } = Astro.props;
-const postUrl = `/artigos/${post.slug}/`;
+const base = import.meta.env.BASE_URL || '/';
+const postUrl = `${base}artigos/${post.slug}/`;
 const categoryLabels: Record<string, string> = {
   hermetismo: 'Hermetismo',
   apocrifos: 'Apócrifos',

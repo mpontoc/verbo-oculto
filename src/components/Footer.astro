@@ -1,17 +1,18 @@
 ---
 const currentYear = new Date().getFullYear();
+const base = import.meta.env.BASE_URL || '/';
 const footerLinks = {
   categorias: [
-    { href: '/categorias/hermetismo', label: 'Hermetismo' },
-    { href: '/categorias/apocrifos', label: 'Apócrifos' },
-    { href: '/categorias/salomao', label: 'Tradição Salomônica' },
-    { href: '/categorias/gnose', label: 'Gnose' },
+    { href: `${base}categorias/hermetismo`, label: 'Hermetismo' },
+    { href: `${base}categorias/apocrifos`, label: 'Apócrifos' },
+    { href: `${base}categorias/salomao`, label: 'Tradição Salomônica' },
+    { href: `${base}categorias/gnose`, label: 'Gnose' },
   ],
   recursos: [
-    { href: '/comece-aqui', label: 'Comece Aqui' },
-    { href: '/recursos', label: 'Biblioteca de Fontes' },
-    { href: '/newsletter', label: 'Newsletter Grátis' },
-    { href: '/sobre', label: 'Sobre o Projeto' },
+    { href: `${base}comece-aqui`, label: 'Comece Aqui' },
+    { href: `${base}recursos`, label: 'Biblioteca de Fontes' },
+    { href: `${base}newsletter`, label: 'Newsletter Grátis' },
+    { href: `${base}sobre`, label: 'Sobre o Projeto' },
   ],
   redes: [
     { href: 'https://verbooculto.beehiiv.com', label: 'Beehiiv', external: true },
@@ -23,7 +24,7 @@ const footerLinks = {
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="/" class="site-title">Verbo Oculto</a>
+        <a href={base} class="site-title">Verbo Oculto</a>
         <p>Estudos herméticos, apócrifos e tradição salomônica. Conteúdo educacional, histórico e filosófico — sem misticismo vago.</p>
       </div>
       <nav class="footer-nav" aria-label="Categorias">
@@ -41,7 +42,7 @@ const footerLinks = {
     </div>
     <div class="footer-bottom">
       <p>&copy; {currentYear} Verbo Oculto. Todos os direitos reservados.</p>
-      <p><a href="/privacidade" style="color: inherit; border-color: currentColor;">Política de Privacidade</a> • <a href="/termos" style="color: inherit; border-color: currentColor;">Termos de Uso</a> • <a href="/disclaimer" style="color: inherit; border-color: currentColor;">Disclaimer</a></p>
+      <p><a href={`${base}privacidade`} style="color: inherit; border-color: currentColor;">Política de Privacidade</a> • <a href={`${base}termos`} style="color: inherit; border-color: currentColor;">Termos de Uso</a> • <a href={`${base}disclaimer`} style="color: inherit; border-color: currentColor;">Disclaimer</a></p>
     </div>
   </div>
 </footer>

@@ -1,6 +1,7 @@
 ---
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
+import '@/styles/global.css';
 interface Props { title: string; description?: string; canonicalURL?: string; ogImage?: string; }
 const { title, description = 'Estudos herméticos, apócrifos e tradição salomônica.', canonicalURL, ogImage } = Astro.props;
 const siteURL = 'https://verbooculto.beehiiv.com';
