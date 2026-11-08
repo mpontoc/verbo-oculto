@@ -1,0 +1,32 @@
+---
+import HomeLayout from '@/layouts/HomeLayout.astro';
+import NewsletterForm from '@/components/NewsletterForm.astro';
+---
+<HomeLayout>
+  <article class="container" style="max-width: 600px; margin: 0 auto; text-align: center;">
+    <h1>Newsletter Verbo Oculto</h1>
+    <p style="font-size: 1.2rem; color: var(--color-text-light); margin: 1.5rem 0;">Toda quarta-feira, 10h: um texto primordial, um princípio hermético aplicado, uma chave prática.</p>
+
+    <div style="background: var(--color-border); padding: 2rem; border-radius: 8px; margin: 2rem 0; text-align: left;">
+      <h3 style="margin-top: 0;">O que você recebe:</h3>
+      <ul style="line-height: 2;">
+        <li>📜 <strong>Texto da Semana</strong> — trecho traduzido + comentário (Enoque, Hermes, Salomão, Gnose)</li>
+        <li>🗝️ <strong>Chave Prática</strong> — exercício de 5–10 min (leitura ativa, journaling, meditação, vibração)</li>
+        <li>📚 <strong>Recurso Curado</strong> — link para artigo completo + livro/tradutor recomendado</li>
+        <li>🎁 <strong>Lead Magnet Imediato</strong> — PDF "5 Textos Essenciais" (8 páginas)</li>
+      </ul>
+    </div>
+
+    <NewsletterForm
+      title="Assine grátis"
+      description="Sem spam. Cancelamento em 1 clique. Seus dados ficam no Beehiiv (LGPD compliant)."
+      buttonText="Quero receber o PDF + Newsletter"
+    />
+
+    <hr style="margin: 3rem 0; border-color: var(--color-border);" />
+
+    <h3>Edições Anteriores (Arquivo)</h3>
+    <p style="color: var(--color-text-light);">Acesse o arquivo público no Beehiiv:</p>
+    <p><a href="https://verbooculto.beehiiv.com" class="btn btn-outline" target="_blank" rel="noopener">Ver Arquivo no Beehiiv</a></p>
+  </article>
+</HomeLayout>

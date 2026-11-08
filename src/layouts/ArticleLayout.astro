@@ -1,0 +1,53 @@
+---
+import Layout from './Layout.astro';
+import { generateArticleJsonLd } from '@/utils/seo';
+import SchemaOrg from '@/components/SchemaOrg.astro';
+import TableOfContents from '@/components/TableOfContents.astro';
+import CitationList from '@/components/CitationList.astro';
+import NewsletterForm from '@/components/NewsletterForm.astro';
+import { formatDate, readingTime } from '@/utils/dates';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'post'>;
+  headings: { depth: number; text: string; slug: string }[];
+  citations: { id: string; text: string; url: string; title?: string }[];
+  content: string;
+}
+const { post, headings, citations, content } = Astro.props;
+const siteURL = 'https://verbooculto.beehiiv.com';
+const jsonLd = generateArticleJsonLd(post, siteURL);
+const categoryLabels: Record<string, string> = {
+  hermetismo: 'Hermetismo', apocrifos: 'Apócrifos', salomao: 'Tradição Salomônica',
+  gnose: 'Gnose', pratica: 'Prática', guias: 'Guias',
+};
+---
+<Layout title={`${post.data.title} | Verbo Oculto`} description={post.data.description} canonicalURL={`/artigos/${post.slug}/`} ogImage={post.data.heroImage}>
+  <SchemaOrg jsonLd={jsonLd} />
+  <article class="container">
+    <header class="article-header">
+      <span class="category">{categoryLabels[post.data.category] || post.data.category}</span>
+      <h1>{post.data.title}</h1>
+      <div class="article-meta">
+        <time datetime={post.data.pubDate.toISOString().split('T')[0]}>{formatDate(post.data.pubDate)}</time>
+        {post.data.updatedDate && <time datetime={post.data.updatedDate.toISOString().split('T')[0]}>Atualizado: {formatDate(post.data.updatedDate)}</time>}
+        <span>{readingTime(content)}</span>
+        <span>por {post.data.author}</span>
+      </div>
+    </header>
+    <div class="article-content" set:html={content} />
+    {headings.filter(h => h.depth === 2 || h.depth === 3).length > 0 && <TableOfContents headings={headings} />}
+    {citations.length > 0 && <CitationList citations={citations} />}
+    <hr style="margin: 3rem 0; border-color: var(--color-border);" />
+    <NewsletterForm title="Quer estudar com método?" description="Receba toda quarta-feira: um texto, um princípio, uma prática. Grátis." />
+  </article>
+</Layout>
+
+<script is:inline>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      const target = document.querySelector(anchor.getAttribute('href')!);
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>

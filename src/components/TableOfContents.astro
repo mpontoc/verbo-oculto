@@ -1,0 +1,15 @@
+---
+interface Props { headings: { depth: number; text: string; slug: string }[]; }
+const { headings } = Astro.props;
+const tocItems = headings.filter(h => h.depth === 2 || h.depth === 3);
+---
+<details class="toc" open>
+  <summary>Neste artigo</summary>
+  <ul>
+    {tocItems.map(h => (
+      <li style={h.depth === 3 ? 'padding-left: 1.5rem;' : ''}>
+        <a href={`#${h.slug}`}>{h.text}</a>
+      </li>
+    ))}
+  </ul>
+</details>

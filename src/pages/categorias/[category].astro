@@ -1,0 +1,37 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import ArticleCard from '@/components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+const categoryMap: Record<string, string> = {
+  hermetismo: 'Hermetismo',
+  apocrifos: 'Apócrifos',
+  salomao: 'Tradição Salomônica',
+  gnose: 'Gnose',
+};
+
+export async function getStaticPaths() {
+  return [
+    { params: { category: 'hermetismo' } },
+    { params: { category: 'apocrifos' } },
+    { params: { category: 'salomao' } },
+    { params: { category: 'gnose' } },
+  ];
+}
+
+const { category } = Astro.props;
+const allPosts = await getCollection('post');
+const posts = allPosts.filter(p => p.data.category === category).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const title = categoryMap[category] || category || 'Categoria';
+---
+<Layout title={`${title} | Verbo Oculto`} description={`Artigos sobre ${title.toLowerCase()}: hermetismo, textos apócrifos, grimórios salomônicos, gnose e prática hermética.`}>
+  <div class="container">
+    <header style="margin-bottom: 2rem; text-align: center;">
+      <h1>{title}</h1>
+      <p style="color: var(--color-text-light);">{posts.length} artigos</p>
+    </header>
+    <div class="article-grid">
+      {posts.map(post => <ArticleCard post={post} />)}
+    </div>
+  </div>
+</Layout>

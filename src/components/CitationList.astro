@@ -1,0 +1,15 @@
+---
+interface Props { citations: { id: string; text: string; url: string; title?: string }[]; }
+const { citations } = Astro.props;
+---
+<section class="citations" aria-labelledby="citations-title">
+  <h3 id="citations-title">Fontes e Referências</h3>
+  <ol>
+    {citations.map(c => (
+      <li id={`ref-${c.id}`}>
+        {c.title ? <cite>{c.title}</cite> : <span>{c.text}</span>}
+        {' '}<a href={c.url} target="_blank" rel="noopener noreferrer">{c.url}</a>
+      </li>
+    ))}
+  </ol>
+</section>

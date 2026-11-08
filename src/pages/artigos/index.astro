@@ -1,0 +1,18 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import ArticleCard from '@/components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('post')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+<Layout title="Todos os Artigos | Verbo Oculto" description="Biblioteca completa de artigos sobre hermetismo, apócrifos, tradição salomônica, gnose e prática hermética.">
+  <div class="container">
+    <header style="margin-bottom: 2rem; text-align: center;">
+      <h1>Todos os Artigos</h1>
+      <p style="color: var(--color-text-light);">{posts.length} artigos publicados</p>
+    </header>
+    <div class="article-grid">
+      {posts.map(post => <ArticleCard post={post} />)}
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,23 @@
+---
+const navLinks = [
+  { href: '/', label: 'Início' },
+  { href: '/artigos/', label: 'Artigos' },
+  { href: '/categorias/hermetismo', label: 'Hermetismo' },
+  { href: '/categorias/apocrifos', label: 'Apócrifos' },
+  { href: '/categorias/salomao', label: 'Salomão' },
+  { href: '/categorias/gnose', label: 'Gnose' },
+  { href: '/recursos', label: 'Recursos' },
+  { href: '/newsletter', label: 'Newsletter' },
+];
+---
+<header class="site-header" role="banner">
+  <a href="#main" class="skip-link">Pular para o conteúdo principal</a>
+  <div class="container header-inner">
+    <a href="/" class="site-title" aria-label="Verbo Oculto — Início">Verbo Oculto</a>
+    <nav class="nav" aria-label="Navegação principal">
+      {navLinks.map(link => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,46 @@
+---
+import HomeLayout from '@/layouts/HomeLayout.astro';
+import ArticleCard from '@/components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('post')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const featured = posts.slice(0, 3);
+const recent = posts.slice(3, 9);
+---
+<HomeLayout>
+  <section class="hero container">
+    <h1>Verbo Oculto</h1>
+    <p>Estudos herméticos, apócrifos e tradição salomônica. Traduções comentadas, chaves de leitura e prática hermética — sem misticismo vago.</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
+      <a href="/newsletter" class="btn">Assinar Newsletter Grátis</a>
+      <a href="/comece-aqui" class="btn btn-outline">Comece Aqui</a>
+    </div>
+  </section>
+
+  <section class="container" aria-labelledby="featured-title">
+    <h2 id="featured-title" style="text-align: center; margin-bottom: 2rem;">Artigos em Destaque</h2>
+    <div class="article-grid">
+      {featured.map(post => <ArticleCard post={post} />)}
+    </div>
+  </section>
+
+  <section class="container" aria-labelledby="recent-title">
+    <h2 id="recent-title" style="text-align: center; margin: 4rem 0 2rem;">Últimos Artigos</h2>
+    <div class="article-grid">
+      {recent.map(post => <ArticleCard post={post} />)}
+    </div>
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="/artigos/" class="btn btn-outline">Ver Todos os Artigos</a>
+    </div>
+  </section>
+
+  <section class="container" style="margin-top: 4rem; text-align: center;">
+    <h2>Categorias de Estudo</h2>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
+      <a href="/categorias/hermetismo" class="btn btn-outline">Hermetismo</a>
+      <a href="/categorias/apocrifos" class="btn btn-outline">Apócrifos</a>
+      <a href="/categorias/salomao" class="btn btn-outline">Tradição Salomônica</a>
+      <a href="/categorias/gnose" class="btn btn-outline">Gnose</a>
+    </div>
+  </section>
+</HomeLayout>

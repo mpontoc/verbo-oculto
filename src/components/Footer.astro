@@ -1,0 +1,47 @@
+---
+const currentYear = new Date().getFullYear();
+const footerLinks = {
+  categorias: [
+    { href: '/categorias/hermetismo', label: 'Hermetismo' },
+    { href: '/categorias/apocrifos', label: 'Apócrifos' },
+    { href: '/categorias/salomao', label: 'Tradição Salomônica' },
+    { href: '/categorias/gnose', label: 'Gnose' },
+  ],
+  recursos: [
+    { href: '/comece-aqui', label: 'Comece Aqui' },
+    { href: '/recursos', label: 'Biblioteca de Fontes' },
+    { href: '/newsletter', label: 'Newsletter Grátis' },
+    { href: '/sobre', label: 'Sobre o Projeto' },
+  ],
+  redes: [
+    { href: 'https://verbooculto.beehiiv.com', label: 'Beehiiv', external: true },
+    { href: 'https://github.com/seuusuario/verbo-oculto', label: 'GitHub', external: true },
+  ],
+};
+---
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="site-title">Verbo Oculto</a>
+        <p>Estudos herméticos, apócrifos e tradição salomônica. Conteúdo educacional, histórico e filosófico — sem misticismo vago.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Categorias">
+        <h4>Categorias</h4>
+        <ul>{footerLinks.categorias.map(l => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+      </nav>
+      <nav class="footer-nav" aria-label="Recursos">
+        <h4>Recursos</h4>
+        <ul>{footerLinks.recursos.map(l => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+      </nav>
+      <nav class="footer-nav" aria-label="Redes">
+        <h4>Acompanhe</h4>
+        <ul>{footerLinks.redes.map(l => <li><a href={l.href} target={l.external ? '_blank' : undefined} rel={l.external ? 'noopener noreferrer' : undefined}>{l.label}</a></li>)}</ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {currentYear} Verbo Oculto. Todos os direitos reservados.</p>
+      <p><a href="/privacidade" style="color: inherit; border-color: currentColor;">Política de Privacidade</a> • <a href="/termos" style="color: inherit; border-color: currentColor;">Termos de Uso</a> • <a href="/disclaimer" style="color: inherit; border-color: currentColor;">Disclaimer</a></p>
+    </div>
+  </div>
+</footer>
